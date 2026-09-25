@@ -1,0 +1,590 @@
+  <title>VidaBalance - Tu guía completa de vida saludable</title>
+  <style>
+    :root{
+      --verde:#2e7d32; --verde-claro:#43a047; --verde-suave:#a5d6a7;
+      --fondo:#f4f8f2; --blanco:#ffffff; --texto:#263238; --gris:#607d8b;
+      --sombra:0 4px 14px rgba(0,0,0,.08);
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{font-family:'Poppins',system-ui,sans-serif;background:var(--fondo);color:var(--texto);line-height:1.7}
+    .container{max-width:1100px;margin:0 auto;padding:0 20px}
+    h2{font-size:1.9rem;color:var(--verde);margin-bottom:.5rem}
+    .section{padding:70px 0}
+    .section-alt{background:var(--blanco)}
+    .lead{color:var(--gris);max-width:720px;margin-bottom:2.2rem}
+
+    header{position:sticky;top:0;z-index:100;background:var(--blanco);box-shadow:var(--sombra)}
+    .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+    .logo{font-weight:800;font-size:1.3rem;color:var(--verde);text-decoration:none}
+    .logo span{color:var(--verde-claro)}
+    nav ul{display:flex;gap:18px;list-style:none}
+    nav a{text-decoration:none;color:var(--texto);font-weight:600;font-size:.92rem}
+    nav a:hover{color:var(--verde)}
+    .menu-btn{display:none;background:none;border:none;font-size:1.6rem;cursor:pointer;color:var(--verde)}
+
+    .hero{background:linear-gradient(135deg,var(--verde) 0%,var(--verde-claro) 100%);color:#fff;padding:90px 0;text-align:center}
+    .hero h1{font-size:2.8rem;font-weight:800;margin-bottom:1rem}
+    .hero p{font-size:1.15rem;max-width:680px;margin:0 auto 2rem;opacity:.95}
+    .btn{display:inline-block;padding:13px 30px;border-radius:50px;font-weight:700;text-decoration:none;transition:.2s;border:none;cursor:pointer;font-family:inherit;font-size:1rem}
+    .btn-blanco{background:#fff;color:var(--verde)}
+    .btn-blanco:hover{transform:translateY(-2px);box-shadow:var(--sombra)}
+    .btn-verde{background:var(--verde);color:#fff}
+    .btn-verde:hover{background:var(--verde-claro);transform:translateY(-2px)}
+    .btn-outline{background:#fff;color:var(--verde);border:2px solid var(--verde)}
+    .btn-outline:hover{background:var(--verde-suave)}
+    .stats{display:flex;justify-content:center;gap:40px;flex-wrap:wrap;margin-top:2.5rem}
+    .stat b{font-size:1.8rem;display:block}
+    .stat span{font-size:.85rem;opacity:.9}
+
+    .grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px}
+    .grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:22px}
+    .card{background:var(--blanco);border-radius:16px;padding:26px;box-shadow:var(--sombra);transition:.2s}
+    .card:hover{transform:translateY(-4px)}
+    .card h3{color:var(--verde);margin:.6rem 0 .5rem;font-size:1.1rem}
+    .card ul{padding-left:20px;font-size:.93rem;color:var(--texto)}
+    .card li{margin-bottom:.35rem}
+    .chip{display:inline-block;background:var(--verde-suave);color:var(--verde);padding:3px 12px;border-radius:20px;font-size:.78rem;font-weight:700}
+
+    table{width:100%;border-collapse:collapse;background:#fff;border-radius:12px;overflow:hidden;box-shadow:var(--sombra);font-size:.92rem}
+    th{background:var(--verde);color:#fff;padding:12px;text-align:left}
+    td{padding:11px 12px;border-bottom:1px solid #e8f0e6}
+    tr:last-child td{border-bottom:none}
+
+    .tool{background:#fff;border-radius:16px;padding:26px;box-shadow:var(--sombra)}
+    .tool h3{color:var(--verde);margin-bottom:8px;font-size:1.05rem}
+    .tool label{display:block;font-weight:600;margin:12px 0 4px;font-size:.9rem}
+    .tool input, .tool select{width:100%;padding:10px 12px;border:2px solid #dce8da;border-radius:10px;font-size:1rem;font-family:inherit}
+    .tool input:focus,.tool select:focus{outline:none;border-color:var(--verde-claro)}
+    .resultado{margin-top:16px;padding:16px;border-radius:12px;background:#e8f5e9;color:var(--verde);font-weight:normal;display:none;font-size:.9rem;line-height:1.5}
+    .resultado b{font-size:1rem}
+    .pregunta{padding:14px 0;border-bottom:1px solid #eef3ec;display:flex;align-items:center;gap:12px;cursor:pointer}
+    .pregunta:last-of-type{border-bottom:none}
+    .pregunta input{width:20px;height:20px;accent-color:var(--verde);flex-shrink:0}
+
+    .mito{background:#fff3e0;border-left:5px solid #fb8c00}
+    .mito .etiqueta{color:#e65100;font-size:.75rem;font-weight:800;text-transform:uppercase}
+    .realidad{background:#e8f5e9;border-left:5px solid var(--verde)}
+    .realidad .etiqueta{color:var(--verde);font-size:.75rem;font-weight:800;text-transform:uppercase}
+
+    .timeline{position:relative;padding-left:30px}
+    .timeline::before{content:"";position:absolute;left:9px;top:6px;bottom:6px;width:3px;background:var(--verde-suave);border-radius:3px}
+    .tl-item{position:relative;margin-bottom:20px}
+    .tl-item::before{content:"";position:absolute;left:-27px;top:6px;width:15px;height:15px;border-radius:50%;background:var(--verde-claro);border:3px solid #fff;box-shadow:var(--sombra)}
+    .tl-item b{color:var(--verde)}
+
+    .proyecto-box{background:linear-gradient(135deg,var(--verde),var(--verde-claro));color:#fff;border-radius:20px;padding:45px;text-align:center}
+    .proyecto-box h2{color:#fff}
+    .proyecto-box p{max-width:700px;margin:0 auto 1.5rem;opacity:.95}
+    footer{background:#1b3a1e;color:#c8e6c9;padding:40px 0;text-align:center;font-size:.85rem}
+    footer a{color:#a5d6a7}
+
+    @media(max-width:760px){
+      nav ul{display:none;position:absolute;top:64px;left:0;right:0;background:#fff;flex-direction:column;padding:18px;gap:14px;box-shadow:var(--sombra)}
+      nav ul.abierto{display:flex}
+      .menu-btn{display:block}
+      .hero h1{font-size:2rem}
+      h2{font-size:1.5rem}
+    }
+  </style>
+
+
+
+<header>
+  <div class="container nav">
+    <a class="logo" href="#inicio">Vida<span>Balance</span></a>
+    <button class="menu-btn" id="menuBtn" aria-label="Abrir menú">☰</button>
+    <nav>
+      <ul id="menu">
+        <li><a href="#nutricion">Nutrición</a></li>
+        <li><a href="#ejercicio">Ejercicio</a></li>
+        <li><a href="#mente">Salud Mental</a></li>
+        <li><a href="#sueno">Sueño</a></li>
+        <li><a href="#hidratacion">Hidratación</a></li>
+        <li><a href="#herramientas">Herramientas</a></li>
+        <li><a href="#mitos">Mitos</a></li>
+        <li><a href="#proyecto">Proyecto</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" id="inicio">
+  <div class="container">
+    <h1>Transforma tu vida con hábitos saludables</h1>
+    <p>Tu guía completa y gratuita de nutrición, ejercicio, salud mental, sueño e hidratación. Información clara, calculadoras interactivas y un plan para empezar hoy mismo.</p>
+    <a href="#herramientas" class="btn btn-blanco">Probar las calculadoras</a>
+    <div class="stats">
+      <div class="stat"><b>5</b><span>Áreas clave del bienestar</span></div>
+      <div class="stat"><b>150 min</b><span>Actividad semanal recomendada (OMS)</span></div>
+      <div class="stat"><b>400 g</b><span>Frutas y verduras al día (OMS)</span></div>
+      <div class="stat"><b>100%</b><span>Gratuito y sin registro</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="nutricion">
+  <div class="container">
+    <h2>Nutrición</h2>
+    <p class="lead">Comer bien no es hacer dieta: es darle a tu cuerpo los nutrientes que necesita para tener energía, concentración y defensas fuertes.</p>
+
+    <div class="grid-3">
+      <div class="card">
+        <span class="chip">Macronutriente</span>
+        <h3>Carbohidratos</h3>
+        <p style="font-size:.9rem">Son la principal fuente de energía. Prefiere los integrales: avena, arroz integral, quinua, pan integral y legumbres. Limita los refinados como harinas blancas y azúcares añadidos.</p>
+      </div>
+      <div class="card">
+        <span class="chip">Macronutriente</span>
+        <h3>Proteínas</h3>
+        <p style="font-size:.9rem">Construyen y reparan tejidos, músculos y sistema inmune. Buenas fuentes: pollo, pescado, huevos, lácteos, frijoles, lentejas, garbanzos, tofu y frutos secos.</p>
+      </div>
+      <div class="card">
+        <span class="chip">Macronutriente</span>
+        <h3>Grasas saludables</h3>
+        <p style="font-size:.9rem">Necesarias para el cerebro y las hormonas. Elige aguacate, aceite de oliva, pescados azules, nueces y semillas. Reduce frituras y grasas trans de ultraprocesados.</p>
+      </div>
+      <div class="card">
+        <span class="chip">Micronutriente</span>
+        <h3>Vitaminas</h3>
+        <p style="font-size:.9rem">Vitamina C (cítricos) para defensas, vitamina A (zanahoria) para la vista, complejo B (cereales integrales) para energía y vitamina D (sol y pescado) para huesos.</p>
+      </div>
+      <div class="card">
+        <span class="chip">Micronutriente</span>
+        <h3>Minerales</h3>
+        <p style="font-size:.9rem">Hierro (lentejas, espinacas) contra el cansancio, calcio (lácteos, brócoli) para huesos, potasio (plátano) para músculos y magnesio (frutos secos) para el sueño.</p>
+      </div>
+      <div class="card">
+        <span class="chip">Importante</span>
+        <h3>Lo que conviene limitar</h3>
+        <ul>
+          <li>Azúcares añadidos (refrescos, dulces)</li>
+          <li>Ultraprocesados y comida rápida frecuente</li>
+          <li>Exceso de sal (menos de 5 g al día según la OMS)</li>
+          <li>Alcohol y tabaco</li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="margin-top:34px" class="grid-2">
+      <div class="card">
+        <h3>El método del plato saludable</h3>
+        <p style="font-size:.93rem">Una forma sencilla de comer bien sin contar calorías:</p>
+        <ul>
+          <li><b>½ plato:</b> frutas y verduras de colores variados</li>
+          <li><b>¼ plato:</b> proteína (pollo, pescado, huevo, legumbre)</li>
+          <li><b>¼ plato:</b> granos integrales (arroz integral, quinua)</li>
+          <li>Acompaña con agua y grasas saludables en poca cantidad</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>8 consejos de oro</h3>
+        <ul>
+          <li>Come despacio: la señal de saciedad tarda unos 20 minutos</li>
+          <li>Consume al menos 400 g de frutas y verduras al día</li>
+          <li>No saltes comidas, sobre todo el desayuno</li>
+          <li>Lee etiquetas: menos ingredientes suele ser mejor</li>
+          <li>Planifica tus compras, nunca vayas al súper con hambre</li>
+          <li>Cocina en casa al menos 4 veces por semana</li>
+          <li>Cambia refrescos por agua o agua con frutas</li>
+          <li>Permite "comidas libres" sin culpa: el equilibrio es la clave</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt" id="ejercicio">
+  <div class="container">
+    <h2>Ejercicio físico</h2>
+    <p class="lead">La OMS recomienda al menos 150 minutos de actividad moderada a la semana para adultos. Moverte regularmente reduce el riesgo de enfermedades del corazón, diabetes tipo 2 y depresión, y mejora tu humor y tu sueño.</p>
+
+    <div class="grid-3">
+      <div class="card"><h3>Cardio (resistencia)</h3><p style="font-size:.9rem">Fortalece corazón y pulmones, quema calorías y mejora la resistencia. Ejemplos: caminar rápido, correr, nadar, andar en bici, bailar, saltar la cuerda.</p></div>
+      <div class="card"><h3>Fuerza</h3><p style="font-size:.9rem">Aumenta músculo, acelera el metabolismo y protege huesos y articulaciones. Ejemplos: flexiones, sentadillas, planchas, pesas y bandas elásticas. Hazla 2 veces por semana.</p></div>
+      <div class="card"><h3>Flexibilidad y equilibrio</h3><p style="font-size:.9rem">Previenen lesiones y dolores de espalda, y mejoran tu postura. Ejemplos: estiramientos, yoga, pilates, taichí. Ideal de 10 a 15 minutos al final de cada sesión.</p></div>
+    </div>
+
+    <h3 style="color:var(--verde);margin:34px 0 14px">📅 Rutina semanal de ejemplo (nivel principiante)</h3>
+    <table>
+      <tbody><tr><th>Día</th><th>Actividad</th><th>Duración</th></tr>
+      <tr><td>Lunes</td><td>Cardio suave (caminata rápida o bici)</td><td>30 min</td></tr>
+      <tr><td>Martes</td><td>Fuerza: sentadillas, flexiones, planchas (3 series de 10 a 12)</td><td>30 min</td></tr>
+      <tr><td>Miércoles</td><td>Descanso activo: estiramientos o paseo ligero</td><td>20 min</td></tr>
+      <tr><td>Jueves</td><td>Fuerza: bandas elásticas y ejercicios con mancuernas</td><td>30 min</td></tr>
+      <tr><td>Viernes</td><td>Cardio moderado (trote, natación, baile)</td><td>30 min</td></tr>
+      <tr><td>Sábado</td><td>Yoga o movilidad, o actividad al aire libre</td><td>40 min</td></tr>
+      <tr><td>Domingo</td><td>Descanso total</td><td>-</td></tr>
+    </tbody></table>
+
+    <div class="grid-2" style="margin-top:26px">
+      <div class="card"><h3>Consejos para empezar bien</h3><ul><li>Empieza de a poco y sube la intensidad gradualmente</li><li>Calienta 5 minutos y estira al terminar</li><li>Usa calzado adecuado e hidrátate antes, durante y después</li><li>La mejor rutina es la que puedes mantener: elige algo que disfrutes</li></ul></div>
+      <div class="card"><h3>Señales para frenar</h3><ul><li>Mareo, dolor en el pecho o falta de aire extrema</li><li>Dolor articular agudo durante el movimiento</li><li>Fatiga que no mejora con el descanso</li><li>Si tienes una condición médica, consulta a un profesional antes de iniciar</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="mente">
+  <div class="container">
+    <h2>Salud mental y emocional</h2>
+    <p class="lead">La salud mental es tan importante como la física. Cuidar tu mente mejora tus relaciones, tu rendimiento y tu bienestar general. Pedir ayuda es un acto de valentía, no de debilidad.</p>
+
+    <div class="grid-3">
+      <div class="card"><h3>Respiración 4-7-8</h3><p style="font-size:.9rem">Inhala por la nariz 4 segundos, retén 7 segundos y exhala por la boca 8 segundos. Repite 4 veces. Calma la ansiedad en minutos.</p></div>
+      <div class="card"><h3>Desconexión digital</h3><p style="font-size:.9rem">Establece horarios sin pantallas, silencia notificaciones después de las 21:00 y evita redes sociales al despertar. Tu atención es tu recurso más valioso.</p></div>
+      <div class="card"><h3>Diario de gratitud</h3><p style="font-size:.9rem">Cada noche escribe 3 cosas por las que estás agradecido. Este hábito simple mejora el ánimo y la calidad del sueño según la psicología positiva.</p></div>
+      <div class="card"><h3>Conexión social</h3><p style="font-size:.9rem">Habla con amigos y familia, realiza actividades en grupo y ayuda a otros. El aislamiento prolongado es un factor de riesgo para la salud mental.</p></div>
+      <div class="card"><h3>Atención plena (mindfulness)</h3><p style="font-size:.9rem">Dedica 10 minutos diarios a observar tu respiración sin juzgar tus pensamientos. Apps gratuitas y videos guiados pueden ayudarte a empezar.</p></div>
+      <div class="card"><h3>Contacto con la naturaleza</h3><p style="font-size:.9rem">Pasar 120 minutos a la semana en espacios verdes se asocia con mejor salud y bienestar. Un paseo por un parque ya cuenta.</p></div>
+    </div>
+
+    <div class="grid-2" style="margin-top:26px">
+      <div class="card" style="background:#fff8e1"><h3>Señales de alerta</h3><ul><li>Tristeza o irritabilidad persistente por más de 2 semanas</li><li>Cambios fuertes de apetito o sueño</li><li>Pérdida de interés en actividades que antes disfrutabas</li><li>Dificultad para concentrarte o realizar tareas cotidianas</li><li>Pensamientos de hacerte daño (busca ayuda de inmediato)</li></ul></div>
+      <div class="card"><h3>Dónde buscar ayuda</h3><ul><li>Profesional de salud mental: psicólogo o psiquiatra</li><li>Centros de salud pública: muchos ofrecen atención psicológica gratuita</li><li>Líneas de apoyo emocional de tu país (búscalas en tu ministerio de salud)</li><li>Habla con alguien de confianza: compartir alivia</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt" id="sueno">
+  <div class="container">
+    <h2>Sueño reparador</h2>
+    <p class="lead">Dormir bien consolida la memoria, regula las hormonas del apetito, fortalece defensas y regula el ánimo. No es tiempo perdido: es mantenimiento esencial de tu cuerpo y tu cerebro.</p>
+
+    <div class="grid-2">
+      <div>
+        <h3 style="color:var(--verde);margin-bottom:14px">Horas de sueño recomendadas</h3>
+        <table>
+          <tbody><tr><th>Edad</th><th>Horas por día</th></tr>
+          <tr><td>Bebés (1 a 2 años)</td><td>11 a 14</td></tr>
+          <tr><td>Preescolares (3 a 5)</td><td>10 a 13</td></tr>
+          <tr><td>Escolares (6 a 13)</td><td>9 a 11</td></tr>
+          <tr><td>Adolescentes (14 a 17)</td><td>8 a 10</td></tr>
+          <tr><td>Adultos (18 a 64)</td><td>7 a 9</td></tr>
+          <tr><td>Adultos mayores (65+)</td><td>7 a 8</td></tr>
+        </tbody></table>
+      </div>
+      <div class="card">
+        <h3>Higiene del sueño: 10 reglas</h3>
+        <ul>
+          <li>Acuéstate y levántate a la misma hora, incluso fines de semana</li>
+          <li>Evita pantallas 1 hora antes de dormir (la luz azul retrasa el sueño)</li>
+          <li>Habitación oscura, silenciosa y fresca (18 a 21 °C)</li>
+          <li>Evita la cafeína después de las 14:00</li>
+          <li>Cenas ligeras, 2 a 3 horas antes de acostarte</li>
+          <li>Haz ejercicio de día, pero no muy intenso antes de dormir</li>
+          <li>Usa la cama solo para dormir, no para estudiar ni ver series</li>
+          <li>Si no puedes dormir en 20 minutos, levántate y haz algo tranquilo</li>
+          <li>Evita siestas largas o tardías (máximo 20 a 30 min antes de las 16:00)</li>
+          <li>Crea una rutina relajante: lectura, respiración, música suave</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="hidratacion">
+  <div class="container">
+    <h2>Hidratación</h2>
+    <p class="lead">Tu cuerpo es aproximadamente 60% agua. Hidratarte regula tu temperatura, transporta nutrientes, lubrica articulaciones y mejora tu concentración. Una caída de solo 2% en tu hidratación ya afecta tu rendimiento.</p>
+
+    <div class="grid-3">
+      <div class="card"><h3>¿Cuánta agua beber?</h3><p style="font-size:.9rem">Como referencia general: unas 6 a 8 vasos al día (1.5 a 2 litros) para adultos, más si haces ejercicio, hace calor o amamantas. Usa nuestra calculadora para una estimación personalizada.</p></div>
+      <div class="card"><h3>Señales de deshidratación</h3><p style="font-size:.9rem">Sed intensa, orina amarilla oscura, dolor de cabeza, fatiga, mareo, labios secos y dificultad para concentrarse. Si tu orina es amarilla clara, vas bien.</p></div>
+      <div class="card"><h3>Trucos para beber más</h3><p style="font-size:.9rem">Lleva siempre una botella reutilizable, agrega rodajas de limón, pepino o fresas, bebe un vaso al despertar y antes de cada comida, y usa apps o alarmas como recordatorio.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt" id="herramientas">
+  <div class="container">
+    <h2>Herramientas interactivas</h2>
+    <p class="lead">Calcula tu índice de masa corporal, tu necesidad diaria de agua, tus calorías diarias y evalúa tus hábitos con el test de bienestar. Todo funciona sin internet, directamente en tu navegador.</p>
+
+    <div class="grid-3">
+      <div class="tool">
+        <h3>Calculadora de IMC</h3>
+        <label for="peso">Peso (kg)</label>
+        <input type="number" id="peso" placeholder="Ej: 65">
+        <label for="altura">Altura (cm)</label>
+        <input type="number" id="altura" placeholder="Ej: 170">
+        <button type="button" id="btnIMC" class="btn btn-verde" style="margin-top:16px;width:100%">Calcular</button>
+        <div class="resultado" id="resIMC"></div>
+      </div>
+
+      <div class="tool">
+        <h3>Calculadora de agua</h3>
+        <label for="pesoAgua">Peso (kg)</label>
+        <input type="number" id="pesoAgua" placeholder="Ej: 65">
+        <label for="actividad">Nivel de actividad</label>
+        <select id="actividad">
+          <option value="1">Sedentaria</option>
+          <option value="1.5">Moderada (30 min de ejercicio)</option>
+          <option value="2">Alta (1 hora o más de ejercicio)</option>
+        </select>
+        <button type="button" id="btnAgua" class="btn btn-verde" style="margin-top:16px;width:100%">Calcular</button>
+        <div class="resultado" id="resAgua"></div>
+      </div>
+
+      <div class="tool">
+        <h3>Calculadora de calorías diarias</h3>
+        <label for="sexoCal">Sexo</label>
+        <select id="sexoCal">
+          <option value="hombre">Hombre</option>
+          <option value="mujer">Mujer</option>
+        </select>
+        <label for="pesoCal">Peso (kg)</label>
+        <input type="number" id="pesoCal" placeholder="Ej: 65">
+        <label for="alturaCal">Altura (cm)</label>
+        <input type="number" id="alturaCal" placeholder="Ej: 170">
+        <label for="edadCal">Edad (años)</label>
+        <input type="number" id="edadCal" placeholder="Ej: 25">
+        <label for="actividadCal">Nivel de actividad</label>
+        <select id="actividadCal">
+          <option value="1.2">Sedentario (poco o nada de ejercicio)</option>
+          <option value="1.375">Ligero (1 a 3 días por semana)</option>
+          <option value="1.55">Moderado (3 a 5 días por semana)</option>
+          <option value="1.725">Muy activo (6 a 7 días por semana)</option>
+          <option value="1.9">Extremo (trabajo físico intenso)</option>
+        </select>
+        <button type="button" id="btnCalorias" class="btn btn-verde" style="margin-top:16px;width:100%">Calcular</button>
+        <div class="resultado" id="resCalorias"></div>
+      </div>
+
+      <div class="tool">
+        <h3>Test de hábitos (8 preguntas)</h3>
+        <p style="font-size:.83rem;margin-bottom:8px">Marca cada afirmación que sea verdadera para ti esta semana:</p>
+        <div id="quiz">
+          <label class="pregunta"><input type="checkbox" class="habito"><span style="font-size:.87rem">Comí al menos 5 porciones de frutas o verduras hoy</span></label>
+          <label class="pregunta"><input type="checkbox" class="habito"><span style="font-size:.87rem">Hice 30 minutos de actividad física</span></label>
+          <label class="pregunta"><input type="checkbox" class="habito"><span style="font-size:.87rem">Bebí al menos 6 vasos de agua</span></label>
+          <label class="pregunta"><input type="checkbox" class="habito"><span style="font-size:.87rem">Dormí 7 horas o más</span></label>
+          <label class="pregunta"><input type="checkbox" class="habito"><span style="font-size:.87rem">Evité refrescos y dulces ultraprocesados</span></label>
+          <label class="pregunta"><input type="checkbox" class="habito"><span style="font-size:.87rem">Dediqué 10 minutos a relajarme o respirar</span></label>
+          <label class="pregunta"><input type="checkbox" class="habito"><span style="font-size:.87rem">Cené ligero y no comí muy tarde</span></label>
+          <label class="pregunta"><input type="checkbox" class="habito"><span style="font-size:.87rem">Pasé tiempo con gente que quiero</span></label>
+        </div>
+        <button type="button" id="btnTest" class="btn btn-verde" style="margin-top:14px;width:100%">Ver mi resultado</button>
+        <button type="button" id="btnReset" class="btn btn-outline" style="margin-top:8px;width:100%">Reiniciar test</button>
+        <div class="resultado" id="resTest"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="mitos">
+  <div class="container">
+    <h2>Mitos vs Realidades</h2>
+    <p class="lead">En internet abunda información falsa sobre salud. Aquí desmentimos los mitos más comunes con base en evidencia.</p>
+    <div class="grid-2">
+      <div class="card mito"><span class="etiqueta">Mito</span><p style="font-size:.93rem">"Los carbohidratos engordan, hay que eliminarlos"</p></div>
+      <div class="card realidad"><span class="etiqueta">Realidad</span><p style="font-size:.93rem">Los carbohidratos integrales son la principal fuente de energía. Lo que engorda es el exceso de calorías, no el grupo de alimentos en sí.</p></div>
+      <div class="card mito"><span class="etiqueta">Mito</span><p style="font-size:.93rem">"Solo hay que hacer ejercicio si quieres bajar de peso"</p></div>
+      <div class="card realidad"><span class="etiqueta">Realidad</span><p style="font-size:.93rem">El ejercicio fortalece el corazón, los huesos y la mente aunque tu peso no cambie. Es salud, no castigo.</p></div>
+      <div class="card mito"><span class="etiqueta">Mito</span><p style="font-size:.93rem">"8 vasos de agua exactos para todas las personas"</p></div>
+      <div class="card realidad"><span class="etiqueta">Realidad</span><p style="font-size:.93rem">La necesidad depende del peso, el clima y tu actividad física. La mejor guía es el color de tu orina: amarilla clara significa buena hidratación.</p></div>
+      <div class="card mito"><span class="etiqueta">Mito</span><p style="font-size:.93rem">"Dormir poco demuestra que eres más productivo"</p></div>
+      <div class="card realidad"><span class="etiqueta">Realidad</span><p style="font-size:.93rem">Dormir menos de 7 horas reduce tu memoria, tu concentración y tus defensas. Dormir bien te hace más productivo.</p></div>
+      <div class="card mito"><span class="etiqueta">Mito</span><p style="font-size:.93rem">"Los productos light o sin grasa siempre son más sanos"</p></div>
+      <div class="card realidad"><span class="etiqueta">Realidad</span><p style="font-size:.93rem">Muchos añaden azúcar o almidones para mejorar el sabor. Lee la etiqueta completa y compárala con la versión original.</p></div>
+      <div class="card mito"><span class="etiqueta">Mito</span><p style="font-size:.93rem">"Un hábito se forma en 21 días"</p></div>
+      <div class="card realidad"><span class="etiqueta">Realidad</span><p style="font-size:.93rem">Los estudios indican un rango de 18 a más de 200 días según el hábito y la persona. La clave es la constancia, no el calendario.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt" id="habitos">
+  <div class="container">
+    <h2>Cómo crear hábitos que duren</h2>
+    <p class="lead">El cambio no es de golpe: es de a poco. Estos son los pasos con mayor respaldo científico para transformar hábitos saludables en costumbres.</p>
+    <div class="grid-2">
+      <div class="card">
+        <h3>5 pasos comprobados</h3>
+        <ul>
+          <li><b>Empieza ridículamente pequeño:</b> 1 manzana al día, 5 flexiones, 10 minutos de lectura</li>
+          <li><b>Una cosa a la vez:</b> apilar varios cambios nuevos a la vez multiplica el fracaso</li>
+          <li><b>Ancla el hábito:</b> asocia el nuevo hábito a uno existente (ej: después de lavar los dientes, estiro 5 minutos)</li>
+          <li><b>Diseña tu entorno:</b> deja visibles las cosas buenas (frutas en la mesa) y oculta las malas (dulces en un armario alto)</li>
+          <li><b>Celebra los avances:</b> registra tu racha y date un premio no alimentario cada semana cumplida</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Ejemplo de día saludable</h3>
+        <div class="timeline">
+          <div class="tl-item"><b>06:30</b> Despiertas, vaso de agua, 10 min de estiramientos</div>
+          <div class="tl-item"><b>07:00</b> Desayuno completo: avena, fruta, proteína</div>
+          <div class="tl-item"><b>09:00 a 18:00</b> Botella de agua siempre a la vista, pausas de 5 min cada hora para moverte</div>
+          <div class="tl-item"><b>18:00</b> 30 min de ejercicio: caminata, fuerza o bici</div>
+          <div class="tl-item"><b>19:30</b> Cena ligera con el método del plato saludable</div>
+          <div class="tl-item"><b>21:00</b> Modo sin pantallas, diario de gratitud (3 cosas)</div>
+          <div class="tl-item"><b>22:00</b> A dormir: 8 horas de reparación total</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="proyecto">
+  <div class="container">
+    <div class="proyecto-box">
+      <h2>Este sitio es un proyecto benéfico</h2>
+      <p>VidaBalance nace como un proyecto de informática con impacto social: usar la tecnología para acercar información confiable de salud a comunidades que la necesitan. El código es libre, funciona sin internet y puede usarse en talleres, escuelas y centros comunitarios.</p>
+      <p><b>¿Cómo puedes ayudar?</b></p>
+      <p style="font-size:.95rem">Comparte este sitio con escuelas y centros comunitarios de tu zona. Imparte un taller de alfabetización digital usando este material. Dona computadoras reacondicionadas donde puedan instalarse contenidos como este. Sugiere mejoras o informa de errores para seguir mejorando el proyecto.</p>
+      <a href="mailto:contacto@vidabalance.org" class="btn btn-blanco">Contacta al equipo</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p><b>VidaBalance</b> · Proyecto de informática para el bienestar · <span id="anio"></span></p>
+    <p>Aviso importante: este sitio ofrece información general de educación para la salud y no sustituye el diagnóstico ni el tratamiento de un profesional médico. Antes de iniciar cambios importantes en tu alimentación o ejercicio, consulta con un profesional de salud.</p>
+    <p>Hecho con cariño y código libre. Puedes copiar, modificar y compartir este sitio en tu comunidad.</p>
+  </div>
+</footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const $ = (id) => document.getElementById(id);
+
+  function mostrar(id, html) {
+    const el = $(id);
+    el.innerHTML = html;
+    el.style.display = "block";
+  }
+
+  function numeroValido(id, nombre, minimo, maximo) {
+    const valor = parseFloat($(id).value);
+    if (!Number.isFinite(valor) || valor < minimo || valor > maximo) {
+      mostrar(id === "peso" || id === "altura" ? "resIMC" :
+              id === "pesoAgua" ? "resAgua" : "resCalorias",
+              `<b>Dato no válido.</b><br>${nombre} debe estar entre ${minimo} y ${maximo}.`);
+      return null;
+    }
+    return valor;
+  }
+
+  // Calculadora de IMC
+  $("btnIMC").addEventListener("click", function () {
+    const peso = parseFloat($("peso").value);
+    const alturaCm = parseFloat($("altura").value);
+
+    if (!Number.isFinite(peso) || peso <= 0 || peso > 500 ||
+        !Number.isFinite(alturaCm) || alturaCm <= 0 || alturaCm > 250) {
+      mostrar("resIMC", "<b>Revisa los datos.</b><br>Introduce un peso entre 1 y 500 kg y una altura entre 1 y 250 cm.");
+      return;
+    }
+
+    const alturaM = alturaCm / 100;
+    const imc = peso / (alturaM * alturaM);
+    let categoria;
+
+    if (imc < 18.5) categoria = "Bajo peso";
+    else if (imc < 25) categoria = "Peso normal";
+    else if (imc < 30) categoria = "Sobrepeso";
+    else categoria = "Obesidad";
+
+    mostrar("resIMC",
+      `<b>Tu IMC es ${imc.toFixed(1)}</b><br>Categoría orientativa: ${categoria}.` +
+      `<br><small>El IMC es una medida orientativa y no sustituye una evaluación profesional.</small>`
+    );
+  });
+
+  // Calculadora de agua
+  $("btnAgua").addEventListener("click", function () {
+    const peso = parseFloat($("pesoAgua").value);
+    const actividad = parseFloat($("actividad").value);
+
+    if (!Number.isFinite(peso) || peso <= 0 || peso > 500) {
+      mostrar("resAgua", "<b>Revisa el peso.</b><br>Introduce un valor entre 1 y 500 kg.");
+      return;
+    }
+
+    // Referencia sencilla: 35 ml/kg, ajustada por el nivel de actividad seleccionado.
+    const litros = (peso * 35 * actividad) / 1000;
+    const vasos = litros * 4; // vaso de referencia de 250 ml
+
+    mostrar("resAgua",
+      `<b>Estimación: ${litros.toFixed(2)} litros al día</b><br>` +
+      `Aproximadamente ${vasos.toFixed(1)} vasos de 250 ml.` +
+      `<br><small>Es una estimación orientativa. Las necesidades reales pueden variar según clima, alimentación, salud y ejercicio.</small>`
+    );
+  });
+
+  // Calculadora de calorías: Mifflin-St Jeor + factor de actividad
+  $("btnCalorias").addEventListener("click", function () {
+    const sexo = $("sexoCal").value;
+    const peso = parseFloat($("pesoCal").value);
+    const altura = parseFloat($("alturaCal").value);
+    const edad = parseFloat($("edadCal").value);
+    const actividad = parseFloat($("actividadCal").value);
+
+    if (!Number.isFinite(peso) || peso <= 0 || peso > 500 ||
+        !Number.isFinite(altura) || altura <= 0 || altura > 250 ||
+        !Number.isFinite(edad) || edad < 13 || edad > 120) {
+      mostrar("resCalorias",
+        "<b>Revisa los datos.</b><br>Introduce peso (1–500 kg), altura (1–250 cm) y una edad entre 13 y 120 años."
+      );
+      return;
+    }
+
+    let tmb;
+    if (sexo === "hombre") {
+      tmb = (10 * peso) + (6.25 * altura) - (5 * edad) + 5;
+    } else {
+      tmb = (10 * peso) + (6.25 * altura) - (5 * edad) - 161;
+    }
+
+    const mantenimiento = tmb * actividad;
+
+    mostrar("resCalorias",
+      `<b>Gasto energético estimado: ${Math.round(mantenimiento)} kcal/día</b><br>` +
+      `Tasa metabólica basal estimada: ${Math.round(tmb)} kcal/día.` +
+      `<br><small>Es una estimación educativa, no una indicación médica o nutricional personalizada.</small>`
+    );
+  });
+
+  // Test de hábitos
+  $("btnTest").addEventListener("click", function () {
+    const checks = document.querySelectorAll(".habito");
+    const puntos = [...checks].filter(c => c.checked).length;
+    const porcentaje = Math.round((puntos / checks.length) * 100);
+
+    let mensaje;
+    if (puntos <= 2) {
+      mensaje = "Puedes empezar con pequeños cambios y mantenerlos de forma constante.";
+    } else if (puntos <= 5) {
+      mensaje = "Vas construyendo buenos hábitos. Elige uno o dos aspectos para reforzar.";
+    } else {
+      mensaje = "Has marcado muchos hábitos saludables. Sigue manteniendo la constancia.";
+    }
+
+    mostrar("resTest",
+      `<b>${puntos} de ${checks.length} hábitos (${porcentaje}%)</b><br>${mensaje}`
+    );
+  });
+
+  $("btnReset").addEventListener("click", function () {
+    document.querySelectorAll(".habito").forEach(c => c.checked = false);
+    $("resTest").style.display = "none";
+    $("resTest").innerHTML = "";
+  });
+
+  // Menú móvil
+  const menuBtn = $("menuBtn");
+  const menu = $("menu");
+  if (menuBtn && menu) {
+    menuBtn.addEventListener("click", function () {
+      const abierto = menu.classList.toggle("abierto");
+      menuBtn.setAttribute("aria-expanded", abierto ? "true" : "false");
+    });
+
+    menu.querySelectorAll("a").forEach(a => {
+      a.addEventListener("click", () => menu.classList.remove("abierto"));
+    });
+  }
+
+  // Año del pie de página
+  $("anio").textContent = new Date().getFullYear();
+});
+</script>
